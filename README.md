@@ -2,7 +2,7 @@
 
 ## Autor 
 
-** Nicolas Fernando Romero Giler
+* Nicolas Fernando Romero Giler 
 
 ---
 
