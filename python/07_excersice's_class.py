@@ -17,7 +17,6 @@ elif zona == 3:
 else:
     print("Los digitos que a ingresado no son validos, por favor verifique.")
 
-
 if zona == 1:
     costo_total = costo * America
     print("El costo total del envio es: ", costo_total)

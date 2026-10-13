@@ -38,12 +38,6 @@ print("El comunicado es: ", comunicado)
 nuevo_comunicado= comunicado.replace("vana", "van a")
 print("El nuevo comunicado es: ", nuevo_comunicado) 
 
-planetas= "Naboo", "Tatooine", "Coruscant", "Alderaan"
-planetas_lista = planetas.split(", ")
-print(planetas_lista)
-print("La lista de planetas es: ", str(planetas_lista))
-print("El primer planeta es: ", planetas_lista[0])
-
 droide = "R2-D2"
 print("El droide es: ", droide)
 print("El primer caracter del droide es: ", droide[0])
