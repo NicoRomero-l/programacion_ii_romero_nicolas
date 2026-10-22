@@ -13,6 +13,7 @@ urlpatterns = [
               views.destination, name="destinatario"),
     path("base_triangulo/<int:base>/<int:altura>",
                   views.base_triangulo, name="base_triangulo"),
-    path("my-first-template", views.my-first-template, name="my-first-template")
+    path("my_first_template", views.my_first_template, name="my_first_template"),
+    path("leads-like", views.leads_like, name="leads-like")
 ]
 

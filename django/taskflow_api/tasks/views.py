@@ -32,5 +32,21 @@ def my_first_template(request):
     }
     return render(request, "tasks/my-first-template.html", contexto)
 
+def home(request):
+    return HttpResponse("""
+        <html>
+            <body>
+                <h1>TaskFlow</h1>
+                <p>Bienvenido al sistema</p>
+            </body>
+        </html>
+    """)
 
+def leads_like(request):
+    contexto = {
+        "titulo": "Piloto",
+        "nombre": "Nicolas",
+        "apellido": "Romero"
+    }
+    return render(request, "leads/leads-like.html", contexto)
 
