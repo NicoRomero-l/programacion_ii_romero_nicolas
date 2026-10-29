@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
+from .forms import TaskForm, ProjectForm
+from .models import Project
 
 def home(request):
     """Vista de bienvenida de la app tasks."""
@@ -49,4 +51,42 @@ def leads_like(request):
         "apellido": "Romero"
     }
     return render(request, "leads/leads-like.html", contexto)
+
+def lista(request):
+    contexto = {
+        "titulo": "TaskFlow",
+        "mensaje": "Organiza tus proyectos y tareas en un solo lugar",
+        "projects": Project.objects.order_by("-created_at"),
+    }
+    return render(request, "home.html", contexto)
+
+def project_create(request):
+    if request.method == "POST":
+        form = ProjectForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("tasks:projects-list") 
+    else:
+        form = ProjectForm() 
+
+    return render(request, "tasks/project_form.html", {"form": form, "modo": "crear"})
+
+def task_create(request):
+    if request.method == "POST":
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("tasks:home")
+    else:
+            form = TaskForm()
+    return render(request, "tasks/task_form.html", {"form": form, "modo": "crear"})
+
+def projects_list(request):
+    contexto = {
+        "titulo": "TaskFlow",
+        "mensaje": "Organiza tus proyectos y tareas en un solo lugar",
+        "projects": Project.objects.order_by("-created_at"),
+    }
+    return render(request, "tasks/projects.html", contexto)
+
 
