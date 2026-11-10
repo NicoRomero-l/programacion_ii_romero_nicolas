@@ -15,7 +15,7 @@
     </ul>
     {% endif %}
     <button>
-        <a href="{% url 'create_libro' %}">Crear Nuevo Libro</a>
+        <a href="{% url 'libro_create' %}">Crear Nuevo Libro</a>
     </button>
     <table border="1">
         <thead>
@@ -33,8 +33,8 @@
                 <td>{{ libro.autor }}</td>
                 <td>{{ libro.fecha_publicacion}}</td>
                 <td>
-                    <a href="{% url 'update_libro' libro.pk %}">Editar</a>
-                    <a href="{% url 'delete_libro' libro.pk %}">Eliminar</a>
+                    <a href="{% url 'libro_update' libro.pk %}">Editar</a>
+                    <a href="{% url 'libro_delete' libro.pk %}">Eliminar</a>
                 </td>
             </tr>
             {% empty %}
@@ -43,10 +43,11 @@
             </tr>
             {% endfor %}
         </tbody>
-        tfoot>
+        <tfoot>
             <tr>
                 <td colspan="3"> Total de Libros: {{libros|length}}</td>
             </tr>
+        </tfoot>
     </table>
 </body>
 </html>
