@@ -14,9 +14,48 @@
         {% endfor %}
     </ul>
     {% endif %}
+        <button>
+            <a href="{% url 'categoria_list' %}">
+                Ver lista de categorías
+            </a>
+        </button>   
     <button>
         <a href="{% url 'libro_create' %}">Crear Nuevo Libro</a>
     </button>
+        <button>
+            <a href="{% url 'home' %}">
+                Volver al inicio
+            </a>
+    </button> 
+        <h2>Lista de Libros</h2>
+        <form method="GET">
+            <p>
+                <label for = "pista">
+                    Buscar por titulo, autor o categoría:
+                </label>
+                <input
+                    type="text"
+                    name="pista"
+                    id="pista"
+                    value="{{ request.GET.pista }}">
+            </p>
+            <p>
+                <label for="categoria">
+                    Categoria
+                </label>
+                <select name="categoria" id="categoria">
+                    <option value="">Todas las Categorias</option>
+                    {% for categoria in categorias %}
+                        <option value="{{ categoria.id }}" 
+                            {% if categoria_id == categoria.id|stringformat:"s" %}
+                                selected
+                            {% endif %}>
+                            {{ categoria.nombre }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </p>
+        </form>
     <table border="1">
         <thead>
             <tr>
@@ -34,7 +73,9 @@
                 <td>{{ libro.fecha_publicacion}}</td>
                 <td>
                     <a href="{% url 'libro_update' libro.pk %}">Editar</a>
-                    <a href="{% url 'libro_delete' libro.pk %}">Eliminar</a>
+                    {% if perms.catalogo.delete_libro %}
+                        <a href="{% url 'libro_delete' libro.pk %}">Eliminar</a>
+                    {% endif %}
                 </td>
             </tr>
             {% empty %}
