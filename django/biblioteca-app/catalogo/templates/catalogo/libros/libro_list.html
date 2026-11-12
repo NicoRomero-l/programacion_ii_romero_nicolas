@@ -43,7 +43,7 @@
                 <label for="categoria">
                     Categoria
                 </label>
-                <select name="categoria" id="categoria">
+                <select name="categoria_id" id="categoria_id">
                     <option value="">Todas las Categorias</option>
                     {% for categoria in categorias %}
                         <option value="{{ categoria.id }}" 
@@ -55,6 +55,7 @@
                     {% endfor %}
                 </select>
             </p>
+            <button type="submit">Buscar</button>
         </form>
     <table border="1">
         <thead>

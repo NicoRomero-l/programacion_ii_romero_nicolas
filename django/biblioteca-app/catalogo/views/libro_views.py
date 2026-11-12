@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 @permission_required('catalogo.view_libro', raise_exception=True)
 def libro_list(request):
     pista = request.GET.get('pista', '').strip()
-    categoria_id = request.GET.get('categoria', '').strip()
+    categoria_id = request.GET.get('categoria_id', '').strip()
     libros = Libro.objects.select_related('categoria').all()
     if pista:
         libros = libros.filter(
@@ -29,7 +29,6 @@ def libro_list(request):
     }
     return render(request,
                     'catalogo/libros/libro_list.html',
-                    {'libros': libros},
                     contexto)
 
 @login_required
